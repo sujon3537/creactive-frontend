@@ -11,6 +11,8 @@ const Blog = () => {
   let [commentArr, setCommentArr] = useState([]);
   let [singlePost, setSinglePost] = useState();
 
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
   let data = useSelector((e) => e.user.userInfo);
   let navigate = useNavigate();
   let { postid } = useParams();
@@ -25,7 +27,7 @@ const Blog = () => {
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: `http://localhost:8000/api/v1/frontend/blog/${postid}`,
+      url: `${backendUrl}/api/v1/frontend/blog/${postid}`,
     };
     axios
       .request(config)
@@ -112,7 +114,7 @@ const Blog = () => {
                   <div className="p-4 my-4 border">
                     <img
                       className="h-[600px] w-full object-cover"
-                      src={`http://localhost:8000/api/v1/images/${singlePost?.image}`}
+                      src={`${backendUrl}/api/v1/images/${singlePost?.image}`}
                       alt={singlePost?.title}
                     />
                   </div>
@@ -187,7 +189,7 @@ const Blog = () => {
                         <div className="flex items-center mb-4">
                           <img
                             className="w-10 h-10 rounded-full me-4"
-                            src={`http://localhost:8000/api/v1/images/${item.authId?.image}`}
+                            src={`${backendUrl}/api/v1/images/${item.authId?.image}`}
                             alt={item.authId.uname}
                           />
                           <div className="font-medium ">

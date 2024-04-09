@@ -15,6 +15,8 @@ const Login = () => {
 
   let data = useSelector((e) => e.user.userInfo);
 
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
   useEffect(() => {
     if (data) {
       if (data != "logout") {
@@ -29,7 +31,7 @@ const Login = () => {
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "http://localhost:8000/api/v1/backend/auth/login",
+      url: `${backendUrl}/api/v1/backend/auth/login`,
       headers: {
         "Content-Type": "application/json",
       },

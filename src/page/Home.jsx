@@ -7,6 +7,8 @@ const Home = () => {
   let data = useSelector((e) => e.user.userInfo);
   let navigate = useNavigate();
 
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
   const [allpost, setAllPost] = useState([]);
 
   useEffect(() => {
@@ -19,7 +21,7 @@ const Home = () => {
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: "http://localhost:8000/api/v1/frontend/blog/allpost",
+      url: `${backendUrl}/api/v1/frontend/blog/allpost`,
     };
     axios
       .request(config)
@@ -117,7 +119,7 @@ const Home = () => {
                       <div className="p-4 my-4 border">
                         <img
                           className="object-cover w-full h-60"
-                          src={`http://localhost:8000/api/v1/images/${item.image}`}
+                          src={`${backendUrl}/api/v1/images/${item.image}`}
                           alt={item.title}
                         />
                       </div>
@@ -132,7 +134,7 @@ const Home = () => {
                         <div className="flex items-center space-x-4">
                           <img
                             className="rounded-full w-7 h-7"
-                            src={`http://localhost:8000/api/v1/images/${item.authId.image}`}
+                            src={`${backendUrl}/api/v1/images/${item.authId.image}`}
                             alt={item.authId.uname}
                           />
                           <span className="font-medium ">

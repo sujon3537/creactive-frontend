@@ -13,11 +13,13 @@ const Registration = () => {
 
   // let data = useSelector((demo) => console.log(demo));
 
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
   const handleSubmit = () => {
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "http://localhost:8000/api/v1/backend/auth/register",
+      url: `${backendUrl}/api/v1/backend/auth/register`,
       headers: {
         "Content-Type": "multipart/form-data",
         // "Content-Type": "application/json",

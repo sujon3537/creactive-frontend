@@ -27,6 +27,8 @@ const Dash = () => {
 
   const [editPostData, setEditPostData] = useState();
 
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
   const data = useSelector((e) => e.user.userInfo);
   const navigate = useNavigate();
 
@@ -40,7 +42,7 @@ const Dash = () => {
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: "http://localhost:8000/api/v1/backend/blog/allposts",
+      url: `${backendUrl}/api/v1/backend/blog/allposts`,
     };
     axios
       .request(config)
@@ -58,7 +60,7 @@ const Dash = () => {
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "http://localhost:8000/api/v1/backend/blog/createpost",
+      url: `${backendUrl}/api/v1/backend/blog/createpost`,
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -105,7 +107,7 @@ const Dash = () => {
   //   let config = {
   //     method: "get",
   //     maxBodyLength: Infinity,
-  //     url: `http://localhost:8000/api/v1/backend/blog/post/${postId}`,
+  //     url: `${backendUrl}/api/v1/backend/blog/post/${postId}`,
   //   };
   //   axios
   //     .request(config)
@@ -132,7 +134,7 @@ const Dash = () => {
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "http://localhost:8000/api/v1/backend/blog/updatepost",
+      url: `${backendUrl}/api/v1/backend/blog/updatepost`,
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -210,7 +212,7 @@ const Dash = () => {
           className="flex items-center justify-center w-full h-16 text-xl font-bold text-gray-800 border-b"
         >
           <img
-            src={`http://localhost:8000/api/v1/images/${data.image}`}
+            src={`${backendUrl}/api/v1/images/${data.image}`}
             className="h-8"
           />
         </a>
@@ -404,7 +406,7 @@ const Dash = () => {
                       </td>
                       <td className="p-3 border" width="90px">
                         <img
-                          src={`http://localhost:8000/api/v1/images/${item.image}`}
+                          src={`${backendUrl}/api/v1/images/${item.image}`}
                           alt={item.title}
                           className="h-12"
                         />
@@ -467,7 +469,7 @@ const Dash = () => {
                   </th>
                   <td className="border">
                     <img
-                      src={`http://localhost:8000/api/v1/images/${editPostData?.image}`}
+                      src={`${backendUrl}/api/v1/images/${editPostData?.image}`}
                       alt={editPostData?.title}
                       className="h-12 ml-3"
                     />
